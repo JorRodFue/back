@@ -2,7 +2,7 @@ let mysql = require('mysql')
 require("dotenv").config();
 
 let env = process.env
-
+let localhost
 console.log("HEROKUMODE VALE", env.herokuMode)
 
 if (env.herokuMode !== "1") localhost = true

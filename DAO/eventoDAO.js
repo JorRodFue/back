@@ -52,14 +52,11 @@ let eventoDAO = {
             valor = objeto.valor
 
             queryParcial += `${operador} UPPER(${field}) like '%${valor.trim()}%' `
-            // if (i < arrayObjetos.length) queryParcial += objeto.condicional
             i++
         }
         let query = `SELECT * FROM eventos WHERE ${queryParcial};`
-
         console.log(query)
         let prom = new Promise((resolve, reject) => {
-
             db.query(query, (err, res) => {
                 if (err) reject(err)
                 resolve(res)

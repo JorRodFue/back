@@ -17,8 +17,8 @@ let env = process.env
 let googleKey = env.googleKey
 let googleStreetKey = env.googleStreetKey
 
-scrapearWeb(urlPrueba)
-crearArrayCameras()
+// scrapearWeb(urlPrueba)
+// crearArrayCameras()
 
 
 

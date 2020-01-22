@@ -9,7 +9,7 @@ if (env.herokuMode !== "1") localhost = true
 
 
 
-console.log(env.hostnamelocal)
+console.log("conectamos via", localhost ? env.HOSTNAMELOCAL : env.hostname)
 let myDB = mysql.createPool(
 
     {

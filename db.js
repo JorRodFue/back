@@ -5,24 +5,18 @@ let env = process.env
 
 console.log("HEROKUMODE VALE", env.herokuMode)
 
-if (env.herokuMode !== "1") {
+if (env.herokuMode !== "1") localhost = true
 
-    console.log("BASE DE DATOS LOCAL")
 
-    env.hostname = env.HOSTNAMELOCAL
-    env.hostname = env.userLOCAL
-    env.passworddb = env.PASSWORDDBLOCAL
-    env.database = env.DATABASELOCAL
-}
 
 console.log(env.hostnamelocal)
 let myDB = mysql.createPool(
 
     {
-        host: (env.mode === "LOCAL") ? env.HOSTNAMELOCAL : env.hostname,
-        user: (env.mode === "LOCAL") ? env.USERDBLOCAL : env.hostname,
-        password: (env.mode === "LOCAL") ? env.PASSWORDDLOCAL : env.passworddb,
+        host: localhost ? env.HOSTNAMELOCAL : env.hostname,
+        user: localhost ? env.USERDBLOCAL : env.hostname,
+        password: localhost ? env.PASSWORDDLOCAL : env.passworddb,
         port: env.portdb,
-        database: (env.mode === "LOCAL") ? env.databaseLOCAL : env.database
+        database: localhost ? env.databaseLOCAL : env.database
     })
 module.exports = myDB;

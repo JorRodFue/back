@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  p PANEL DE  CONTROL
+  
+    ul.container
+     div.row
+      li.col-4 CREATE BASE DATOS DE EVENTOS
+        form.form-group(action="/api/eventos/create" method="POST")
+         input.btn.btn-primary(type="submit")
+      li.col-4 RELLENAR BASE DATOS DE EVENTOS
+        form.form-group(action="/api/eventos/fill" method="POST")
+         input.btn.btn-primary(type="submit")
+      li.col-4 TRUNCAR EVENTOS
+        form.form-group(action="/api/eventos/truncate" method="POST")
+         input.btn.btn-primary(type="submit")
+     div.row
+      li.col-4 ESCRAPEAR CONTENIDO
+        form.form-group(action="/api/eventos/reimaginar" method="POST")
+         input.btn.btn-primary(type="submit")
+      li.col-4 RESET ESCRAPEOS
+        form.form-group(action="/api/eventos/resetScrap" method="POST")
+         input.btn.btn-primary(type="submit")
+      li.col-4 Hacer GEOCODING
+        form.form-group(action="/api/eventos/geoCoding" method="POST")
+         input.btn.btn-primary(type="submit")
+     div.row
+      li.col-4 BUSCAR DUPLICADOS
+        form.form-group(action="/api/eventos/buscarDuplicados" method="POST")
+         input.btn.btn-primary(type="submit")    
+      li.col-4 CREATE BASE DATOS DE COMENTARIOS
+        form.form-group(action="/api/comentarios/create" method="POST")
+         input.btn.btn-primary(type="submit")
+      li.col-4 RELLENAR BASE DATOS DE COMENTARIOS
+        form.form-group(action="/api/comentarios/fill" method="POST")
+         input.btn.btn-primary(type="submit")
+     div.row
+      li.col-4 TRUNCAR COMENTARIOS
+        form.form-group(action="/api/comentarios/truncate" method="POST")
+         input.btn.btn-primary(type="submit")
+      li.col-4 CREATE BASE DATOS DE USUARIOS
+        form.form-group(action="/api/usuarios/create" method="POST")
+         input.btn.btn-primary(type="submit")
+      li.col-4 RELLENAR BASE DATOS DE USUARIOS
+        form.form-group(action="/api/usuarios/fill" method="POST")
+         input.btn.btn-primary(type="submit")
+      li.col-4 TRUNCAR USUARIOS
+        form.form-group(action="/api/usuarios/truncate" method="POST")
+         input.btn.btn-primary(type="submit")

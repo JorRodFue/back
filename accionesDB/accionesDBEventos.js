@@ -22,14 +22,16 @@ let googleStreetKey = env.googleStreetKey
 
 
 let eventoDAO = require("../DAO/eventoDAO").eventoDAO
-eventoDAO.getByID(3421).then(async (results) => {
-    if (results) {
-        console.log(results)
-        let direccion = results.direccionScrap
-        geocoding(direccion).then((result) => { console.log(result.data.results[0].geometry.location) })
-    }
 
-}).catch(err => console.log(err))
+//pruebas antiguas
+// eventoDAO.getByID(3421).then(async (results) => {
+//     if (results) {
+//         console.log(results)
+//         let direccion = results.direccionScrap
+//         geocoding(direccion).then((result) => { console.log(result.data.results[0].geometry.location) })
+//     }
+
+// }).catch(err => console.log(err))
 
 
 let corsPrefix = "https://cors-anywhere.herokuapp.com/"
@@ -400,10 +402,7 @@ function geocoding(direccion) {
 
 
 
-reverseGeoCoding(40.3775, -3.75477).then(results => console.log(
-
-    results.data.results[0].formatted_address,
-    results.data.results[0].address_components[6].long_name))
+// reverseGeoCoding(40.3775, -3.75477).then(results => console.log(results.data.results[0].formatted_address, results.data.results[0].address_components[6].long_name))
 
 
 function guardarContenidoEnArchivo(contenido, archivo = "errores") {

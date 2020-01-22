@@ -3,7 +3,9 @@ require("dotenv").config();
 
 let env = process.env
 
-if (env.mode === "LOCAL") {
+console.log("HEROKUMODE VALE", env.herokuMode)
+
+if (env.mode === "LOCAL" && env.herokuMode != "1") {
 
     console.log("BASE DE DATOS LOCAL")
 

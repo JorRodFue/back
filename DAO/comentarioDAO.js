@@ -1,11 +1,11 @@
-let db = require("../db")
+let db = require("../db").myDB
 let moment = require('moment')
 
 let comentarioDAO = {
 
     async getAll() {
         return new Promise((resolve, reject) => {
-            db.query("SELECT * from proyecto.comentarios",
+            db.query("SELECT * from comentarios",
                 (err, res) => {
                     if (err) reject(err)
                     resolve(res)
@@ -16,7 +16,7 @@ let comentarioDAO = {
     crearTable() {
         console.log("Acceso a crear table comentarios")
         let prom = new Promise((resolve, reject) => {
-            db.query("create table if not exists proyecto.comentarios (ID int(10) primary key auto_increment, eventoID int(10) , FOREIGN KEY (eventoID) REFERENCES proyecto.eventos(ID), usuarioID int(10),  FOREIGN KEY (usuarioID) REFERENCES proyecto.usuarios(ID), titulo VARCHAR(32), comentario TEXT, valoracion INT(2), recomendable BOOLEAN , fecha DATE)", (err, res) => {
+            db.query("create table if not exists comentarios (ID int(10) primary key auto_increment, eventoID int(10) , FOREIGN KEY (eventoID) REFERENCES eventos(ID), usuarioID int(10),  FOREIGN KEY (usuarioID) REFERENCES usuarios(ID), titulo VARCHAR(32), comentario TEXT, valoracion INT(2), recomendable BOOLEAN , fecha DATE)", (err, res) => {
                 if (err) reject(err)
                 resolve(res)
             })
@@ -31,7 +31,7 @@ let comentarioDAO = {
                 arrayValues.push(comentario[key]);
             }
             console.log("boy a insertar", arrayValues)
-            db.query("INSERT INTO proyecto.comentarios VALUES (null,?)", [arrayValues], (err, res) => {
+            db.query("INSERT INTO comentarios VALUES (null,?)", [arrayValues], (err, res) => {
                 if (err) reject(err)
                 resolve(res)
             })
@@ -41,7 +41,7 @@ let comentarioDAO = {
 
     deleteComentario(id) {
         let prom = new Promise((resolve, reject) => {
-            db.query("DELETE FROM proyecto.comentarios WHERE id=?", [id], (err, res) => {
+            db.query("DELETE FROM comentarios WHERE id=?", [id], (err, res) => {
                 if (err) reject(err)
                 resolve(res)
             })
@@ -50,7 +50,7 @@ let comentarioDAO = {
     },
     truncateTable() {
         return new Promise((resolve, reject) => {
-            db.query("TRUNCATE table proyecto.comentarios", (err, res) => {
+            db.query("TRUNCATE table comentarios", (err, res) => {
                 if (err) reject(err)
                 resolve(res)
             })
@@ -59,7 +59,7 @@ let comentarioDAO = {
     ,
     getByID(ID) {
         let prom = new Promise((resolve, reject) => {
-            db.query(`select * from proyecto.comentarios where ID =${ID}`,
+            db.query(`select * from comentarios where ID =${ID}`,
                 (err, results) => {
                     if (err) reject(err)
                     resolve(results)
@@ -71,7 +71,7 @@ let comentarioDAO = {
 
     getByEventoID(ID) {
         let prom = new Promise((resolve, reject) => {
-            db.query(`select * from proyecto.comentarios where eventoID =${ID}`,
+            db.query(`select * from comentarios where eventoID =${ID}`,
                 (err, results) => {
                     if (err) reject(err)
                     resolve(results)
@@ -82,7 +82,7 @@ let comentarioDAO = {
     actualizarTabladeIndices(eventoID, comentarioID) {
         console.log("actualizando tabla de indices eventos - comentarios con ", eventoID, comentarioID)
         let prom = new Promise((resolve, reject) => {
-            db.query("insert into proyecto.indiceseventoscomentarios values (null, ? , ?)", [eventoID, comentarioID],
+            db.query("insert into indiceseventoscomentarios values (null, ? , ?)", [eventoID, comentarioID],
                 (err, results) => {
                     if (err) {
                         console.log(err)
@@ -97,7 +97,7 @@ let comentarioDAO = {
     getEventosComentarios() {
         console.log("get EventosComentarios")
         let prom = new Promise((resolve, reject) => {
-            db.query("SELECT * from proyecto.indiceseventoscomentarios", (err, res) => {
+            db.query("SELECT * from indiceseventoscomentarios", (err, res) => {
                 if (err) {
                     console.log(err)
                     reject(err)

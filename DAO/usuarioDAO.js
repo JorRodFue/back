@@ -1,12 +1,14 @@
-let db = require("../db")
+let db = require("../db").myDB
 let bcrypt = require('bcryptjs')
+let env = require("../db").env
+
 
 let usuarioDAO = {
 
     getAll() {
         console.log("entramos en usuario getAll()")
         let prom = new Promise((resolve, reject) => {
-            db.query("SELECT * from proyecto.usuarios", (err, res) => {
+            db.query("SELECT * from usuarios", (err, res) => {
                 if (err) reject(err)
                 resolve(res)
             })
@@ -19,7 +21,7 @@ let usuarioDAO = {
         console.log("buscando a ", email)
 
         let prom = new Promise((resolve, reject) => {
-            db.query("SELECT * from proyecto.usuarios where email = ?", [email], (err, res) => {
+            db.query("SELECT * from usuarios where email = ?", [email], (err, res) => {
                 if (err) reject(err)
                 console.log(res)
                 resolve(res)
@@ -30,7 +32,7 @@ let usuarioDAO = {
     getByUsername(username = null) {
         console.log("buscando a ", username)
         let prom = new Promise((resolve, reject) => {
-            db.query("SELECT * from proyecto.usuarios where username = ?", [username], (err, res) => {
+            db.query("SELECT * from usuarios where username = ?", [username], (err, res) => {
                 console.log("query hechas")
 
                 if (err) reject(err)
@@ -43,7 +45,7 @@ let usuarioDAO = {
     getByID(id = null) {
         console.log("buscando a user id ", id)
         let prom = new Promise((resolve, reject) => {
-            db.query("SELECT * from proyecto.usuarios where id = ?", [id], (err, res) => {
+            db.query("SELECT * from usuarios where id = ?", [id], (err, res) => {
                 if (err) reject(err)
                 resolve(res)
             })
@@ -69,7 +71,7 @@ let usuarioDAO = {
         console.log("insertando usuario", arrayValues)
 
         let prom = new Promise((resolve, reject) => {
-            db.query(`INSERT INTO proyecto.usuarios VALUES (null,?)`,
+            db.query(`INSERT INTO usuarios VALUES (null,?)`,
                 [arrayValues],
                 (err, res) => {
                     if (err) reject(err)
@@ -81,8 +83,8 @@ let usuarioDAO = {
     createUsuariosTable() {
         console.log("create usuarios Table")
         let prom = new Promise((resolve, reject) => {
-            // db.query("drop table if exists proyecto.usuarios")
-            db.query("create table if not exists proyecto.usuarios (ID INT(10) primary key auto_increment, username VARCHAR(16), email VARCHAR(24), password VARCHAR(255) , privilegios INT(2), activado BOOLEAN, fecha DATE , avatar INT(5));", (err, res) => {
+            // db.query("drop table if exists usuarios")
+            db.query("create table if not exists usuarios (ID INT(10) primary key auto_increment, username VARCHAR(16), email VARCHAR(24), password VARCHAR(255) , privilegios INT(2), activado BOOLEAN, fecha DATE , avatar INT(5));", (err, res) => {
                 if (err) reject(err)
                 resolve(res)
             })
@@ -92,7 +94,7 @@ let usuarioDAO = {
     updateFieldById(id, field, nuevoValor) {
         console.log(`update id ${id} campo ${field} nuevo valor ${nuevoValor}`)
         let prom = new Promise((resolve, reject) => {
-            db.query(`update proyecto.usuarios set ${field}=${nuevoValor} where ID=${id}`, (err, res) => {
+            db.query(`update usuarios set ${field}=${nuevoValor} where ID=${id}`, (err, res) => {
                 if (err) reject(err)
                 resolve(res)
             })

@@ -4,6 +4,7 @@ require("dotenv").config();
 let env = process.env
 let localhost
 console.log("HEROKUMODE VALE", env.herokuMode)
+console.log("ENVCARGADO : ", env.ENVCARGADO)
 
 if (env.herokuMode !== "1") localhost = true
 

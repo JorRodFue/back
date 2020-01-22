@@ -3,14 +3,24 @@ require("dotenv").config();
 
 let env = process.env
 
-console.log(env.hostname)
+if (env.mode === "LOCAL") {
+
+    console.log("BASE DE DATOS LOCAL")
+
+    env.hostname = env.HOSTNAMELOCAL
+    env.hostname = env.userLOCAL
+    env.passworddb = env.PASSWORDDBLOCAL
+    env.database = env.DATABASELOCAL
+}
+
+console.log(env.hostnamelocal)
 let myDB = mysql.createPool(
 
     {
-        host: env.hostname,
-        user: env.userdb,
-        password: env.passworddb,
+        host: (env.mode === "LOCAL") ? env.HOSTNAMELOCAL : env.hostname,
+        user: (env.mode === "LOCAL") ? env.USERDBLOCAL : env.hostname,
+        password: (env.mode === "LOCAL") ? env.PASSWORDDLOCAL : env.passworddb,
         port: env.portdb,
-        database: env.database
+        database: (env.mode === "LOCAL") ? env.databaseLOCAL : env.database
     })
 module.exports = myDB;

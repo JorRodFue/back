@@ -4,7 +4,7 @@ require("dotenv").config();
 let env = process.env
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express', envMode: env.envMode });
+  res.render('index', { title: 'Express', envMode: env.mode });
 });
 
 module.exports = router;

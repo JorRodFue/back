@@ -7,16 +7,16 @@ console.log("HEROKUMODE VALE", env.herokuMode)
 
 if (env.herokuMode !== "1") localhost = true
 
-console.log("evn.hostname = ", process.env.hostname)
+console.log("evn.hostname = ", process.env.HOSTNAME)
 
-console.log("conectamos via", localhost ? env.HOSTNAMELOCAL : env.hostname)
+console.log("conectamos via", localhost ? env.HOSTNAMELOCAL : env.HOSTNAME)
 let myDB = mysql.createPool(
 
     {
-        host: localhost ? env.HOSTNAMELOCAL : env.hostname,
-        user: localhost ? env.USERDBLOCAL : env.hostname,
-        password: localhost ? env.PASSWORDDLOCAL : env.passworddb,
-        port: env.portdb,
-        database: localhost ? env.databaseLOCAL : env.database
+        host: localhost ? env.HOSTNAMELOCAL : env.HOSTNAME,
+        user: localhost ? env.USERDBLOCAL : env.USERDB,
+        password: localhost ? env.PASSWORDDLOCAL : env.PASSWORDB,
+        port: env.PORTDB,
+        database: localhost ? env.databaseLOCAL : env.DATABASE
     })
 module.exports = myDB;

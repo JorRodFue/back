@@ -21,7 +21,6 @@ let googleStreetKey = env.googleStreetKey
 // crearArrayCameras()
 
 
-
 let eventoDAO = require("../DAO/eventoDAO").eventoDAO
 eventoDAO.getByID(3421).then(async (results) => {
     if (results) {

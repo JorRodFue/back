@@ -6,9 +6,7 @@ let env = process.env
 let googleKey = env.googleKey
 let googleStreetKey = env.googleStreetKey
 
-
 let funcionesScrapeo = {
-
     scrapearWeb(url = "", evento = null, log = false, test = false) {
         let prom = new Promise((resolve, reject) => {
             axios.get(url)

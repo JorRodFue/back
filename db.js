@@ -14,7 +14,7 @@ console.log("password", env.PASSWORDDB)
 
 console.log("conectamos via", localhost ? env.HOSTNAMELOCAL : env.HOSTNAME)
 
-let myDB = mysql.createPool(
+myDB = mysql.createPool(
 
     {
         host: localhost ? env.HOSTNAMELOCAL : env.HOSTNAME,

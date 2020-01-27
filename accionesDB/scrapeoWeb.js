@@ -9,7 +9,6 @@ let googleStreetKey = env.googleStreetKey
 
 let funcionesScrapeo = {
 
-
     scrapearWeb(url = "", evento = null, log = false, test = false) {
         let prom = new Promise((resolve, reject) => {
             axios.get(url)
@@ -59,10 +58,8 @@ let funcionesScrapeo = {
                     }
 
                     if ($('.adr') && $('.adr')['0']) {
-
                         direccionScrap = $('dl.adr').children()[1] ? $('dl.adr').children()[1].children[0].data : null
                         barrioScrap = ($('.adr').children().length) > 2 ? $('.adr').children()[$('.adr').children().length - 1].children[0].data : "no viene"
-
                     }
                     if ($('.image-content') && $('.image-content').children()[0]) {
                         console.log("cogemos la imagen del image-content")

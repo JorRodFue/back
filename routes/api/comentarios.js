@@ -7,10 +7,7 @@ require("dotenv").config();
 
 let env = process.env
 
-
-
-// router.use(middleware)
-
+//router.use(middleware)
 // function middleware(req, res, next) {
 //     console.log("pasa por el middleware con token")
 //     let token = req.headers.token
@@ -18,10 +15,8 @@ let env = process.env
 //     try { jwt.decode(token, env.TOKEN_KEY) } //token y la clave de codificaion
 //     catch (err) {
 //         console.log("bloqueado por middleware por falta de token")
-
 //         return res.json({ exito: false, loginError: true })
 //     }
-
 //     next()
 
 // }

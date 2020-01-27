@@ -30,7 +30,7 @@ let comentarioDAO = {
             for (const key in comentario) {
                 arrayValues.push(comentario[key]);
             }
-            console.log("boy a insertar", arrayValues)
+            console.log("voy a insertar", arrayValues)
             db.query("INSERT INTO comentarios VALUES (null,?)", [arrayValues], (err, res) => {
                 if (err) reject(err)
                 resolve(res)

@@ -87,10 +87,7 @@ router.post('/register', async (req, res) => {
     })
 
     .catch((error) => { res.json({ exito: false, contenido: error }) })
-
 })
-
-
 
 router.post('/login', (req, res) => {
   console.log("login post request")

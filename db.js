@@ -13,6 +13,7 @@ console.log("evn.hostname = ", process.env.HOSTNAME)
 console.log("password", env.PASSWORDDB)
 
 console.log("conectamos via", localhost ? env.HOSTNAMELOCAL : env.HOSTNAME)
+
 let myDB = mysql.createPool(
 
     {

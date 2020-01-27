@@ -1,4 +1,4 @@
-let comentarioDAO = require("../DAO/comentarioDAO.js").comentarioDAO
+let { comentarioDAO } = require("../DAO/comentarioDAO.js")
 //capa intermediaria que YA devuelve resultados, resolviendo promesas de la capa DB
 
 let accionesDB = {

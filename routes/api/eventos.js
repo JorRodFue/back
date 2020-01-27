@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const config = require('../../config.js')
 let accionesDB = require('../../accionesDB/accionesDBEventos').accionesDB
 let eventoDAO = require("../../DAO/eventoDAO").eventoDAO
 const { PerformanceObserver, performance } = require('perf_hooks');

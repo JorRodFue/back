@@ -1,4 +1,4 @@
-let usuarioDAO = require("../DAO/usuarioDAO").usuarioDAO
+let { usuarioDAO } = require("../DAO/usuarioDAO")
 //capa intermediaria que YA devuelve resultados, resolviendo promesas de la capa DB
 
 

@@ -12,8 +12,6 @@ let frecuenciaPeticiones2 = 288
 
 let urlPrueba = "https://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=9bab8f90a581c010VgnVCM1000000b205a0aRCRD"
 let scrap = require("./scrapeoWeb.js")
-require("dotenv").config();
-let env = process.env
 let googleKey = env.googleKey
 let googleStreetKey = env.googleStreetKey
 

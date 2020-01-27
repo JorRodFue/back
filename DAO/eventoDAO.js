@@ -1,5 +1,4 @@
-let db = require("../db").myDB
-console.log(db)
+let { db } = require("../db")
 let eventoDAO = {
 
     getAll() {

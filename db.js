@@ -1,20 +1,18 @@
 let mysql = require('mysql')
-require("dotenv").config();
+
+if (env) console.log("cargando db.js, global env definida ")
 //VIVA EL VINO
-let env = process.env
-let localhost
-console.log("HEROKUMODE VALE", env.herokuMode)
-console.log("ENVCARGADO : ", env.ENVCARGADO)
 
-if (env.herokuMode !== "1") localhost = true
+let localhost = env.herokuMode !== "1"
 
 
-console.log("evn.hostname = ", process.env.HOSTNAME)
-console.log("password", env.PASSWORDDB)
+
+// console.log("evn.hostname = ", env.HOSTNAME)
+// console.log("password", env.PASSWORDDB)
 
 console.log("conectamos via", localhost ? env.HOSTNAMELOCAL : env.HOSTNAME)
 
-myDB = mysql.createPool(
+const db = mysql.createPool(
 
     {
         host: localhost ? env.HOSTNAMELOCAL : env.HOSTNAME,
@@ -23,4 +21,4 @@ myDB = mysql.createPool(
         port: env.PORTDB,
         database: localhost ? env.databaseLOCAL : env.DATABASE
     })
-module.exports = { myDB: myDB, env: env };
+module.exports = db

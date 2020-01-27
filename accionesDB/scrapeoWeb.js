@@ -1,10 +1,10 @@
 const axios = require('axios').default
 const fs = require('fs')
 const cheerio = require('cheerio')
-require("dotenv").config();
-let env = process.env
-let googleKey = env.googleKey
-let googleStreetKey = env.googleStreetKey
+// require("dotenv").config();
+// let googleKey = env.googleKey
+// let googleStreetKey = env.googleStreetKey
+console.log(`en scrapeoWeb env vale ${env}`)
 
 let funcionesScrapeo = {
     scrapearWeb(url = "", evento = null, log = false, test = false) {

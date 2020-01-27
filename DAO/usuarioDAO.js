@@ -1,6 +1,5 @@
-let db = require("../db").myDB
+let { db } = require("../db")
 let bcrypt = require('bcryptjs')
-let env = require("../db").env
 
 
 let usuarioDAO = {

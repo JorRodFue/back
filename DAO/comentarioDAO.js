@@ -1,4 +1,4 @@
-let db = require("../db").myDB
+let { db } = require("../db")
 let moment = require('moment')
 
 let comentarioDAO = {

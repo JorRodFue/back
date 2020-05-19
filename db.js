@@ -1,5 +1,6 @@
 let mysql = require('mysql')
 
+let env = global.env
 if (env) console.log("cargando db.js, global env definida ")
 //VIVA EL VINO
 
@@ -21,4 +22,5 @@ const db = mysql.createPool(
         port: env.PORTDB,
         database: localhost ? env.databaseLOCAL : env.DATABASE
     })
-module.exports = db
+
+module.exports = { db }

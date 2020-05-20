@@ -4,16 +4,19 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index.js');
-var usersRouter = require('./routes/users');
-let apiRouter = require('./routes/api.js')
-require("dotenv").config();
 
-global.env = process.env
-console.log(`global.env vale ${global.env}`)
+
+
+
 
 
 var app = express();
+
+const indexRouter = require('./routes/index.js');
+const usersRouter = require('./routes/users');
+
+const apiRouter = require('./routes/api.js')
+
 let cors = require('cors')
 app.use(cors())
 

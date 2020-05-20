@@ -5,7 +5,6 @@ let comentarioDAO = require('../../DAO/comentarioDAO').comentarioDAO
 jwt = require('jwt-simple')
 require("dotenv").config();
 
-let env = process.env
 
 //router.use(middleware)
 // function middleware(req, res, next) {
@@ -24,60 +23,60 @@ let env = process.env
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
-    if (req.query['ID']) {
-        console.log("ha llegado un get con query " + req.query['ID'])
-        let results = await comentarioDAO.getByID([req.query['ID']])
-        res.json(results) //devuelve array de comentarios
-    }
-    if (req.query['EventoID']) {
-        console.log("ha llegado un get con query " + req.query['EventoID'])
-        let results = await comentarioDAO.getByEventoID([req.query['EventoID']])
-        res.json(results) //devuelve array de comentarios
-    }
-    else {
-        console.log("hicieron get en /api/comentarios")
-        let results = await comentarioDAO.getAll()
-        res.json(results)
-    }
+  if (req.query['ID']) {
+    console.log("ha llegado un get con query " + req.query['ID'])
+    let results = await comentarioDAO.getByID([req.query['ID']])
+    res.json(results) //devuelve array de comentarios
+  }
+  if (req.query['EventoID']) {
+    console.log("ha llegado un get con query " + req.query['EventoID'])
+    let results = await comentarioDAO.getByEventoID([req.query['EventoID']])
+    res.json(results) //devuelve array de comentarios
+  }
+  else {
+    console.log("hicieron get en /api/comentarios")
+    let results = await comentarioDAO.getAll()
+    res.json(results)
+  }
 
 });
 
 router.post('/create', async (req, res) => {
-    console.log("ha llegado un post a creeate", req.body)
-    await comentarioDAO.crearTable()
-    res.redirect("/")
+  console.log("ha llegado un post a creeate", req.body)
+  await comentarioDAO.crearTable()
+  res.redirect("/")
 })
 
 router.post('/truncate/', async (req, res) => {
-    console.log("ha llegado un post a truncate")
-    await comentarioDAO.truncateTable()
-    res.redirect("/")
+  console.log("ha llegado un post a truncate")
+  await comentarioDAO.truncateTable()
+  res.redirect("/")
 })
 
 router.post('/add/', async (req, res) => {
-    // console.log("le paso al dao ", req.body)
-    console.log("ha llegado un post a add")
-    let mensaje
-    comentarioDAO.insertarComentario(req.body)
-        .then(async (result) => {
-            mensaje = { exito: true, contenido: result }
-            // console.log(req.body.eventoID, result.insertId)
+  // console.log("le paso al dao ", req.body)
+  console.log("ha llegado un post a add")
+  let mensaje
+  comentarioDAO.insertarComentario(req.body)
+    .then(async (result) => {
+      mensaje = { exito: true, contenido: result }
+      // console.log(req.body.eventoID, result.insertId)
 
-            await comentarioDAO.actualizarTabladeIndices(req.body.eventoID, result.insertId)
+      await comentarioDAO.actualizarTabladeIndices(req.body.eventoID, result.insertId)
 
-        })
-        .catch((err) => { mensaje = { exito: false, contenido: err } })
-        .finally(() => { // VOID??? tener variable que haya pasado then y catch aparte de haberla declarado antes???
-            res.json(mensaje)
-        })
+    })
+    .catch((err) => { mensaje = { exito: false, contenido: err } })
+    .finally(() => { // VOID??? tener variable que haya pasado then y catch aparte de haberla declarado antes???
+      res.json(mensaje)
+    })
 
 
 })
 
 router.get("/tablaIndices/", async (req, res) => {
-    console.log("get a tabla de indices")
-    let results = await comentarioDAO.getEventosComentarios()
-    res.json(results)
+  console.log("get a tabla de indices")
+  let results = await comentarioDAO.getEventosComentarios()
+  res.json(results)
 })
 
 module.exports = router;

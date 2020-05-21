@@ -18,7 +18,7 @@ let googleKey = env.googleKey
 let googleStreetKey = env.googleStreetKey
 
 scrap.scrapearWeb(urlPrueba, null, false, !true)
-crearArrayCameras()
+// crearArrayCameras()
 
 
 let eventoDAO = require("../DAO/eventoDAO").eventoDAO

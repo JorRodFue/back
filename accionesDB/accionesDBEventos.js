@@ -17,7 +17,7 @@ require('../config')
 let googleKey = env.googleKey
 let googleStreetKey = env.googleStreetKey
 
-scrap.scrapearWeb(urlPrueba, null, false, !true)
+// scrap.scrapearWeb(urlPrueba, null, false, !true)
 // crearArrayCameras()
 
 

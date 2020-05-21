@@ -17,7 +17,7 @@ const usersRouter = require('./routes/users');
 
 const apiRouter = require('./routes/api.js')
 
-let cors = require('cors')
+const cors = require('cors')
 app.use(cors())
 
 

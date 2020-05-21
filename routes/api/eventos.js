@@ -128,7 +128,7 @@ function filtrarDuplicados(arrayEntrada, propiedad = "nombre") {
       arrayFiltrado.push(item)
 
     }
-    else console.log(`${item.nombre} está duplicado`)
+    // else console.log(`${item.nombre} está duplicado`)
   }
 
   // let arrayNombres = []

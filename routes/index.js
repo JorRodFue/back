@@ -5,7 +5,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express', envMode: (env.MODE === "LOCAL") ? "LOCALHOST" : "ONLINE" });
+  console.log(env.MODE)
+  res.render('index', { title: 'Express', envMode: (env.MODE == "LOCAL") ? "LOCALHOST" : "ONLINE" });
 });
 
 module.exports = router;

@@ -4,6 +4,7 @@ if (env) console.log("cargando db.js, global env definida ")
 //VIVA EL VINO
 
 let localhost = env.mode === "LOCAL"
+console.log(env.mode);
 
 
 

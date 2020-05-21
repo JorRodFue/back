@@ -10,6 +10,7 @@ let localhost = env.mode === "LOCAL"
 // console.log("evn.hostname = ", env.HOSTNAME)
 // console.log("password", env.PASSWORDDB)
 
+console.log(env.HOSTNAME, env.USERDB, env.PASSWORDDB)
 const db = mysql.createPool(
 
   {

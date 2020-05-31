@@ -6,8 +6,8 @@ const cheerio = require('cheerio')
 let arrayCameras = []
 
 
-let frecuenciaPeticiones1 = 888
-let frecuenciaPeticiones2 = 288
+let frecuenciaPeticiones1 = 888;
+let frecuenciaPeticiones2 = 288;
 
 // let brokenLinks = [require("../DATA/monumentos.json")]
 
